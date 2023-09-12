@@ -1,0 +1,19 @@
+config:
+  target: "http://localhost:3008"
+  phases:
+    - duration: 20
+      arrivalRate: 15
+scenarios:
+  - name: "Send customer 1 requests"
+    flow:
+      - get:
+          url: "/"
+          x-customer-id: "1"
+    weight: 1
+  - name: "Send customer 2 requests"
+    flow:
+      - get:
+          url: "/"
+          headers:
+            x-customer-id: "2"
+    weight: 1
